@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "top.friendcraft.game.alloy.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+    "MixinTitleScreen",
+    "MixinFireball"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
