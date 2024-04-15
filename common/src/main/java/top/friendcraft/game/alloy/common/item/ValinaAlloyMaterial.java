@@ -8,15 +8,21 @@ public class ValinaAlloyMaterial implements AlloyMaterial {
     private final Item item;
     private int temperature;
     private static final int defaultT = 600;
-    public ValinaAlloyMaterial(Item item){
+
+    public ValinaAlloyMaterial(Item item) {
+        this(item, defaultT);
+    }
+
+    public ValinaAlloyMaterial(Item item, int temperature) {
         this.item = item;
-        this.temperature = defaultT;
+        this.temperature = temperature;
     }
 
     @Override
     public Item getItem() {
         return item;
     }
+
     @Override
     public String getNameSpace() {
         AlloyModLoader.LOGGER.info(item.toString());
@@ -26,10 +32,6 @@ public class ValinaAlloyMaterial implements AlloyMaterial {
     @Override
     public int getTemperature() {
         return temperature;
-    }
-
-    public void safetySetTemperature(int temperature){
-        this.temperature = temperature;
     }
 
     @Override
