@@ -1,16 +1,17 @@
 package top.friendcraft.game.alloy.common.item;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 
 public class FuelMaterial implements AlloyMaterial {
-    private Item item;
+    private final Item item;
     public int lvl;
-    public int temprature;
+    private int temperature;
 
-    FuelMaterial(Item item, int level, int temprature) {
+    FuelMaterial(Item item, int level, int temperature) {
         this.item = item;
-        lvl = level;
-        this.temprature = temprature;
+        this.lvl = level;
+        this.temperature = temperature;
     }
 
     @Override
@@ -19,7 +20,14 @@ public class FuelMaterial implements AlloyMaterial {
     }
 
     @Override
-    public String getNameSpace() {
-        return null;
+    public int getTemperature() {
+        return temperature;
     }
+
+    @Override
+    public String getNameSpace() {
+        return BuiltInRegistries.ITEM.getKey(item).getNamespace();
+    }
+
+
 }

@@ -7,11 +7,11 @@ public interface AlloyMaterial {
         return new ValinaAlloyMaterial(item);
     }
 
-    static FuelMaterial getFromValina(Item item, int lvl, int temprature) {
-        return new FuelMaterial(item, lvl, temprature);
+    static FuelMaterial getFromValina(Item item, int lvl, int temperature) {
+        return new FuelMaterial(item, lvl, temperature);
     }
 
     Item getItem();
-
+    int getTemperature();
     String getNameSpace();
 }

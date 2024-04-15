@@ -26,6 +26,11 @@ public class Alloy extends AbstractAlloyItem implements AlloyMaterial {
     }
 
     @Override
+    public int getTemperature() {
+        return 0;
+    }
+
+    @Override
     public String getNameSpace() {
         return BuiltInRegistries.ITEM.getKey(this).getNamespace();
     }
