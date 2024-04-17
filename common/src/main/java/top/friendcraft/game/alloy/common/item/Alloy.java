@@ -1,5 +1,6 @@
 package top.friendcraft.game.alloy.common.item;
 
+import com.google.gson.JsonObject;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 
@@ -37,7 +38,7 @@ public class Alloy extends AbstractAlloyItem implements AlloyMaterial {
 
 
     @Override
-    public List<Item> getRecipeBy() {
+    public List<Item> getRecipeBy(JsonObject jsonObject) {
         List<Item> recipeBy = new ArrayList<>();
         for (AlloyMaterial fronting:
              this.fronting) {

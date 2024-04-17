@@ -1,5 +1,6 @@
 package top.friendcraft.game.alloy.common.item;
 
+import com.google.gson.JsonObject;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 
@@ -22,5 +23,5 @@ public abstract class AbstractAlloyItem extends Item {
                 BuiltInRegistries.ITEM.getKey(this).getPath();
     }
 
-    public abstract List<Item> getRecipeBy();
+    public abstract List<Item> getRecipeBy(JsonObject jsonObject);
 }
