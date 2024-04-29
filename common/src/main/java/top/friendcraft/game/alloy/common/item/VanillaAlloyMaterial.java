@@ -4,16 +4,16 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import top.friendcraft.game.alloy.AlloyModLoader;
 
-public class ValinaAlloyMaterial implements AlloyMaterial {
+public class VanillaAlloyMaterial implements AlloyMaterial {
     private final Item item;
     private int temperature;
     private static final int defaultT = 600;
 
-    public ValinaAlloyMaterial(Item item) {
+    public VanillaAlloyMaterial(Item item) {
         this(item, defaultT);
     }
 
-    public ValinaAlloyMaterial(Item item, int temperature) {
+    public VanillaAlloyMaterial(Item item, int temperature) {
         this.item = item;
         this.temperature = temperature;
     }

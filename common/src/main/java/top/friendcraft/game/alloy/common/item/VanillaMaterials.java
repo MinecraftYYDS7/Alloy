@@ -3,7 +3,7 @@ package top.friendcraft.game.alloy.common.item;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-public enum ValinaMaterials {
+public enum VanillaMaterials {
     IRON_INGOT(Items.IRON_INGOT),
     GOLD_INGOT(Items.GOLD_INGOT),
     COAL(Items.COAL),
@@ -22,17 +22,17 @@ public enum ValinaMaterials {
     private final AlloyMaterial material;
     private final FuelMaterial fuel;
 
-    ValinaMaterials(Item metals) {
+    VanillaMaterials(Item metals) {
         this.material = AlloyMaterial.getFromValina(metals);
         this.fuel = null;
     }
 
-    ValinaMaterials(Item metals, int level, int temprature) {
+    VanillaMaterials(Item metals, int level, int temprature) {
         this.material = null;
         this.fuel = AlloyMaterial.getFromValina(metals, level, temprature);
     }
 
-    public AlloyMaterial getMaterial() {
+    public AlloyMaterial get() {
         if (material == null) {
             return fuel;
         }
