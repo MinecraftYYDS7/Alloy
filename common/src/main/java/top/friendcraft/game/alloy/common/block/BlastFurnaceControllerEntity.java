@@ -2,9 +2,11 @@ package top.friendcraft.game.alloy.common.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -22,10 +24,35 @@ public abstract class BlastFurnaceControllerEntity extends BaseContainerBlockEnt
     protected static final int SLOT_INPUT_7 = 6;
     protected static final int SLOT_INPUT_8 = 7;
     protected static final int SLOT_INPUT_9 = 8;
-    protected static final int SLOT_INPUT_10 = 9;
     protected static final int SLOT_FUEL_1 = 40;
     protected static final int SLOT_FUEL_2 = 41;
     protected static final int SLOT_OUTPUT = 42;
+    protected int progress;
+    protected int max_progress = 100;
+    protected int progress_speed;
+    protected ContainerData data = new ContainerData() {
+        @Override
+        public int get(int index) {
+            switch (index){
+                case 0: return BlastFurnaceControllerEntity.this.progress;
+                case 1: return BlastFurnaceControllerEntity.this.max_progress;
+                default: return 0;
+            }
+        }
+
+        @Override
+        public void set(int index, int value) {
+            switch (index) {
+                case 0: BlastFurnaceControllerEntity.this.progress = value;
+                case 1: BlastFurnaceControllerEntity.this.max_progress = value;
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+    };
     private int xp;
 
     public BlastFurnaceControllerEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState, int exp) {
