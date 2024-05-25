@@ -10,7 +10,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import top.friendcraft.game.alloy.common.block.BlastFurnaceControllerEntity;
 
-public record GenericBlastingRecipe(ResourceLocation id, ItemStack result, int exp, NonNullList<Ingredient> inputs) implements IBlastFurnaceRecipe {
+public record GenericBlastingRecipe(ResourceLocation id, ItemStack result, int exp,
+                                    NonNullList<Ingredient> inputs) implements IBlastFurnaceRecipe {
 
     @Override
     public boolean matches(BlastFurnaceControllerEntity container, Level level) {

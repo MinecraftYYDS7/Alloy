@@ -49,7 +49,7 @@ public abstract class BlastFurnaceControllerEntity extends BaseContainerBlockEnt
 
     @Override
     public int getContainerSize() {
-        return ((int) Math.round(level()*1.5)+3) + 5*level()+1;
+        return ((int) Math.round(level() * 1.5) + 3) + 5 * level() + 1;
     }
 
     @Override
