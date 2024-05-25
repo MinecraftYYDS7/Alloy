@@ -5,9 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
-import net.minecraft.data.recipes.CraftingRecipeBuilder;
-import net.minecraft.world.item.Items;
-import top.friendcraft.game.alloy.core.init.IAlloyRegistry;
 
 import java.util.ArrayList;
 import java.util.Arrays;

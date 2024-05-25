@@ -10,13 +10,23 @@ import top.friendcraft.game.alloy.common.entity.BodyController;
 
 @Mixin(Player.class)
 public abstract class MixinPlayer extends LivingEntity {
+    @Unique
+    BodyController bodyController;
+
     protected MixinPlayer(EntityType<? extends LivingEntity> entityType, Level level) {
         super(entityType, level);
     }
+
     @Unique
-    BodyController bodyController;
-    @Unique public BodyController getBodyController(){return this.bodyController;}
-    @Unique public void createBodyController(){
+    public BodyController getBodyController() {
+        if (this.bodyController == null) {
+            createBodyController();
+        }
+        return this.bodyController;
+    }
+
+    @Unique
+    public void createBodyController() {
         this.bodyController = new BodyController();
     }
 }
