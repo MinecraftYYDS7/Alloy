@@ -10,7 +10,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import top.friendcraft.game.alloy.common.block.BlastFurnaceControllerEntity;
 
-public record GenericBlastingRecipe(ResourceLocation id, ItemStack result, int exp,
+public record GenericBlastingRecipe(ResourceLocation id, ItemStack result, int cookingtime, int exp,
                                     NonNullList<Ingredient> inputs) implements IBlastFurnaceRecipe {
 
     @Override
@@ -42,10 +42,5 @@ public record GenericBlastingRecipe(ResourceLocation id, ItemStack result, int e
     @Override
     public RecipeSerializer<?> getSerializer() {
         return GenericSerializer.INSTANCE;
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return BlastFurnaceRecipeType.INSTANCE;
     }
 }

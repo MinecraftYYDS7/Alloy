@@ -1,8 +1,9 @@
 package top.friendcraft.game.alloy.common.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -14,37 +15,44 @@ import net.minecraft.world.level.block.state.BlockState;
 import top.friendcraft.game.alloy.AlloyModLoader;
 import top.friendcraft.game.alloy.network.client.render.BlastingMenu;
 
+import java.util.AbstractList;
+import java.util.Iterator;
+
 public abstract class BlastFurnaceControllerEntity extends BaseContainerBlockEntity {
-    protected static final int SLOT_INPUT_1 = 0;
-    protected static final int SLOT_INPUT_2 = 1;
-    protected static final int SLOT_INPUT_3 = 2;
-    protected static final int SLOT_INPUT_4 = 3;
-    protected static final int SLOT_INPUT_5 = 4;
-    protected static final int SLOT_INPUT_6 = 5;
-    protected static final int SLOT_INPUT_7 = 6;
-    protected static final int SLOT_INPUT_8 = 7;
-    protected static final int SLOT_INPUT_9 = 8;
-    protected static final int SLOT_FUEL_1 = 40;
-    protected static final int SLOT_FUEL_2 = 41;
-    protected static final int SLOT_OUTPUT = 42;
+    protected int[] sizes;
+    protected int inputsSize;
+    protected int outputsSize;
+    protected int fuelsSize;
+    protected int upgradeSize;
+    protected NonNullList<ItemStack>[] handlers;
+    protected NonNullList<ItemStack> inputsHandler;
+    protected NonNullList<ItemStack> outputsHandler;
+    protected NonNullList<ItemStack> fuelsHandler;
+    protected NonNullList<ItemStack> upgradeHandler;
+    protected int[] indexes;
+    protected int inputsIndex;
+    protected int outputsIndex;
+    protected int fuelsIndex;
+    protected int upgradesIndex;
     protected int progress;
-    protected int max_progress = 100;
-    protected int progress_speed;
+    protected int cookingtime;
     protected ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
-            switch (index){
-                case 0: return BlastFurnaceControllerEntity.this.progress;
-                case 1: return BlastFurnaceControllerEntity.this.max_progress;
-                default: return 0;
-            }
+            return switch (index) {
+                case 0 -> BlastFurnaceControllerEntity.this.progress;
+                case 1 -> BlastFurnaceControllerEntity.this.cookingtime;
+                default -> 0;
+            };
         }
 
         @Override
         public void set(int index, int value) {
             switch (index) {
-                case 0: BlastFurnaceControllerEntity.this.progress = value;
-                case 1: BlastFurnaceControllerEntity.this.max_progress = value;
+                case 0:
+                    BlastFurnaceControllerEntity.this.progress = value;
+                case 1:
+                    BlastFurnaceControllerEntity.this.cookingtime = value;
             }
         }
 
@@ -53,11 +61,26 @@ public abstract class BlastFurnaceControllerEntity extends BaseContainerBlockEnt
             return 2;
         }
     };
-    private int xp;
+    private final int xp;
 
     public BlastFurnaceControllerEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState, int exp) {
         super(type, pos, blockState);
         xp = exp;
+        inputsSize = 5 * level() + 1;
+        upgradeSize = (int) Math.round(level() * 1.5) + 3;
+        fuelsSize = outputsSize = level() > 3 ? 1 : 2;
+        inputsHandler = NonNullList.withSize(inputsSize, ItemStack.EMPTY);
+        outputsHandler = NonNullList.withSize(outputsSize, ItemStack.EMPTY);
+        fuelsHandler = NonNullList.withSize(fuelsSize, ItemStack.EMPTY);
+        upgradeHandler = NonNullList.withSize(upgradeSize, ItemStack.EMPTY);
+        int index = 0;
+        inputsIndex = index;
+        index += inputsSize;
+        outputsIndex = index;
+        index += outputsSize;
+        fuelsIndex = index;
+        index += fuelsSize;
+        upgradesIndex = index;
     }
 
     @Override
@@ -71,16 +94,31 @@ public abstract class BlastFurnaceControllerEntity extends BaseContainerBlockEnt
 
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return new BlastingMenu(containerId, inventory);
+        return new BlastingMenu(containerId, inventory, level(), data);
     }
 
     @Override
     public int getContainerSize() {
-        return ((int) Math.round(level() * 1.5) + 3) + 5 * level() + 1;
+        return upgradeSize + 5 * level() + 1;
     }
 
     @Override
     public boolean isEmpty() {
+        return isEmpty(inputsHandler) && isEmpty(outputsHandler) && isEmpty(fuelsHandler) && isEmpty(upgradeHandler);
+    }
+
+    public boolean isEmpty(AbstractList<?> handler) {
+        Iterator<?> var1 = handler.iterator();
+
+        ItemStack itemStack;
+        do {
+            if (!var1.hasNext()) {
+                return true;
+            }
+
+            itemStack = (ItemStack) var1.next();
+        } while (itemStack.isEmpty());
+
         return false;
     }
 
@@ -113,4 +151,13 @@ public abstract class BlastFurnaceControllerEntity extends BaseContainerBlockEnt
     public void clearContent() {
 
     }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.putShort("Progress", (short) progress);
+        tag.putShort("CookingTime", (short) cookingtime);
+    }
+
+
 }

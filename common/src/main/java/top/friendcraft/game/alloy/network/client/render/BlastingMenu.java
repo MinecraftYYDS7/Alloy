@@ -26,8 +26,9 @@ public class BlastingMenu extends RecipeBookMenu<BlastFurnaceControllerEntity> {
         this(AlloyModLoader.initialization.blast_furnace.get(), containerId, playerInventory, 0);
     }
 
-    public BlastingMenu(int containerId, Inventory playerInventory, int level) {
+    public BlastingMenu(int containerId, Inventory playerInventory, int level, ContainerData data) {
         this(AlloyModLoader.initialization.blast_furnace.get(), containerId, playerInventory, level);
+        this.data = data;
     }
 
     @Override
