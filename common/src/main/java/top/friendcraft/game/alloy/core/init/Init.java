@@ -41,13 +41,9 @@ public class Init extends top.friendcraft.game.alloy.core.api.Init {
         init.Blocks.register();
         init.Recipes.register();
         init.Serializers.register();
-        init.Menus.register();
         init.BlockEntities.register();
         return new Init(MOD_ID);
     }
-
-    public final RegistrySupplier<MenuType<?>> blast_furnace = Menus.register("blast_furnace",
-            () -> new MenuType<>(BlastingMenu::new, FeatureFlags.DEFAULT_FLAGS));
 
 
     public final RegistrySupplier<BlockEntityType<?>> blast_furnace_iron = BlockEntities.register("iron_blast_furnace",

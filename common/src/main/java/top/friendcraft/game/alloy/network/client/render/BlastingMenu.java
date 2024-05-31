@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.RecipeBookMenu;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
-import top.friendcraft.game.alloy.AlloyModLoader;
+import top.friendcraft.game.alloy.ClientModLoader;
 import top.friendcraft.game.alloy.common.block.BlastFurnaceControllerEntity;
 
 public class BlastingMenu extends RecipeBookMenu<BlastFurnaceControllerEntity> {
@@ -23,11 +23,11 @@ public class BlastingMenu extends RecipeBookMenu<BlastFurnaceControllerEntity> {
     }
 
     public BlastingMenu(int containerId, Inventory playerInventory){
-        this(AlloyModLoader.initialization.blast_furnace.get(), containerId, playerInventory, 0);
+        this(ClientModLoader.initialization.blasting.get(), containerId, playerInventory, 0);
     }
 
     public BlastingMenu(int containerId, Inventory playerInventory, int level, ContainerData data) {
-        this(AlloyModLoader.initialization.blast_furnace.get(), containerId, playerInventory, level);
+        this(ClientModLoader.initialization.blasting.get(), containerId, playerInventory, level);
         this.data = data;
     }
 
