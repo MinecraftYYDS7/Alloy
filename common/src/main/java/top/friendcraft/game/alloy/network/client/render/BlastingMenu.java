@@ -3,10 +3,7 @@ package top.friendcraft.game.alloy.network.client.render;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.RecipeBookMenu;
-import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import top.friendcraft.game.alloy.ClientModLoader;
@@ -43,7 +40,7 @@ public class BlastingMenu extends RecipeBookMenu<BlastFurnaceControllerEntity> {
 
     @Override
     public boolean recipeMatches(Recipe<? super BlastFurnaceControllerEntity> recipe) {
-        return false;
+        return recipe.matches();
     }
 
     @Override
@@ -78,11 +75,14 @@ public class BlastingMenu extends RecipeBookMenu<BlastFurnaceControllerEntity> {
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
-        return null;
+        ItemStack quickStack = ItemStack.EMPTY;
+        Slot quickSlot = getSlot(index);
+
+        return quickStack;
     }
 
     @Override
     public boolean stillValid(Player player) {
-        return false;
+        return AbstractContainerMenu.stillValid(player， );
     }
 }

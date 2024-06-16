@@ -5,6 +5,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
+import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -150,7 +151,12 @@ public abstract class BlastFurnaceControllerEntity extends BaseContainerBlockEnt
         super.saveAdditional(tag);
         tag.putShort("Progress", (short) progress);
         tag.putShort("CookingTime", (short) cookingtime);
+        for (NonNullList<ItemStack> handler:
+             handlers) {
+            ContainerHelper.saveAllItems(tag, handler);
+        }
     }
+
 
     protected NonNullList<ItemStack> getHandler(int slot) {
         NonNullList<ItemStack> handler = null;
