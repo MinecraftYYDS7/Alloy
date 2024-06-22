@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import top.friendcraft.game.alloy.ClientModLoader;
 import top.friendcraft.game.alloy.common.block.BlastFurnaceControllerEntity;
 
-public class BlastingMenu extends RecipeBookMenu<BlastFurnaceControllerEntity> {
+public class BlastingMenu extends AbstractContainerMenu {
     private final Inventory playerInventory;
     private int level;
     private ContainerData data;
@@ -26,51 +26,6 @@ public class BlastingMenu extends RecipeBookMenu<BlastFurnaceControllerEntity> {
     public BlastingMenu(int containerId, Inventory playerInventory, int level, ContainerData data) {
         this(ClientModLoader.initialization.blasting.get(), containerId, playerInventory, level);
         this.data = data;
-    }
-
-    @Override
-    public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
-
-    }
-
-    @Override
-    public void clearCraftingContent() {
-
-    }
-
-    @Override
-    public boolean recipeMatches(Recipe<? super BlastFurnaceControllerEntity> recipe) {
-        return recipe.matches();
-    }
-
-    @Override
-    public int getResultSlotIndex() {
-        return 0;
-    }
-
-    @Override
-    public int getGridWidth() {
-        return 0;
-    }
-
-    @Override
-    public int getGridHeight() {
-        return 0;
-    }
-
-    @Override
-    public int getSize() {
-        return 0;
-    }
-
-    @Override
-    public RecipeBookType getRecipeBookType() {
-        return RecipeBookType.BLAST_FURNACE;
-    }
-
-    @Override
-    public boolean shouldMoveToInventory(int slotIndex) {
-        return false;
     }
 
     @Override
