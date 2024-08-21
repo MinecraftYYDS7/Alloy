@@ -1,24 +1,10 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:blasting",
   "group": "alloy",
-  "key": {
-    "D": {
-      "item": "minecraft:diamond"
-    },
-    "O": {
-      "item": "minecraft:obsidian"
-    },
-    "C": {
-      "item": "minecraft:crying_obsidian"
-    }
+  "cookingtime": 800,
+  "experience": 8.0,
+  "ingredient": {
+    "item": "alloy:unfired_obsidianite"
   },
-  "pattern": [
-    "ODO",
-    "DCD",
-    "ODO"
-  ],
-  "result": {
-    "item": "alloy:obsidianite",
-    "count": 1
-  }
+  "result": "alloy:obsidianite"
 }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "alloy",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "C": {
+      "item": "minecraft:crying_obsidian"
+    }
+  },
+  "pattern": [
+    "ODO",
+    "DCD",
+    "ODO"
+  ],
+  "result": {
+    "item": "alloy:unfired_obsidianite",
+    "count": 1
+  }
+}

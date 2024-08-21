@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "alloy",
+  "cookingtime": 400,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "minecraft:iron_ingot"
+  },
+  "result": "alloy:steel_ingot"
+}
