@@ -24,7 +24,9 @@ public class Inits {
     public static final DeferredRegister<CreativeModeTab> Tabs;
 
     public static final RegistrySupplier<Alloy> steel_ingot;
+    public static final RegistrySupplier<Item> unfired_obsidianite;
     public static final RegistrySupplier<CreativeModeTab> alloys;
+    public static final RegistrySupplier<CreativeModeTab> materials;
 
     static {
         Items = DeferredRegister.create(AlloyModLoader.MOD_ID, Registries.ITEM);
@@ -37,12 +39,13 @@ public class Inits {
 
     static {
         alloys = Tabs.register("alloys", () -> top.friendcraft.game.alloy.core.init.Tabs.tab);
+        materials = Tabs.register("materials", () -> top.friendcraft.game.alloy.core.init.Tabs.tabMaterial);
     }
 
     static {
         steel_ingot = Items.register("steel_ingot", () -> new Alloy(new Item.Properties()));
         Items.register("obsidianite", () -> new Alloy(new Item.Properties()));
-        Items.register("unfired_obsidianite", () -> new Item(new Item.Properties()));
+        unfired_obsidianite = Items.register("unfired_obsidianite", () -> new Item(new Item.Properties()));
     }
 
     static {

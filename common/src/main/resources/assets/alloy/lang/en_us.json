@@ -1,5 +1,7 @@
 {
   "item.alloy.steel_ingot": "Steel Ingot",
   "item.alloy.obsidianite": "Obsidianite",
-  "itemGroup.alloy.alloys": "Alloys"
+  "item.alloy.unfired_obsidianite": "Unfired Obsidianite",
+  "itemGroup.alloy.alloys": "Alloys",
+  "itemGroup.alloy.materials": "Materials"
 }
