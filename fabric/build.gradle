@@ -35,7 +35,8 @@ processResources {
     inputs.property "version", project.version
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        expand "version": project.version, "discription": rootProject.discription
+        expand "auth1": "WZTX", "auth2": "Candy_OoO"
     }
 }
 

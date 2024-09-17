@@ -2,6 +2,7 @@
   "item.alloy.steel_ingot": "Steel Ingot",
   "item.alloy.obsidianite": "Obsidianite",
   "item.alloy.unfired_obsidianite": "Unfired Obsidianite",
-  "itemGroup.alloy.alloys": "Alloys",
-  "itemGroup.alloy.materials": "Materials"
+  "itemGroup.alloy.alloys": "Alloy: Alloys",
+  "itemGroup.alloy.materials": "Alloy: Materials",
+  "itemGroup.alloy.potions": "Alloy: Potions"
 }

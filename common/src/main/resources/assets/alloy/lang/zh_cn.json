@@ -3,5 +3,6 @@
   "item.alloy.obsidianite": "黑曜石合金",
   "item.alloy.unfired_obsidianite": "黑曜石合成物",
   "itemGroup.alloy.alloys": "合金工艺：合金",
-  "itemGroup.alloy.materials": "合金工艺：原材料"
+  "itemGroup.alloy.materials": "合金工艺：原材料",
+  "itemGroup.alloy.potions": "合金工艺：药水"
 }

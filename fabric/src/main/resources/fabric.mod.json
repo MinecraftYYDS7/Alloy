@@ -3,13 +3,14 @@
   "id": "alloy",
   "version": "${version}",
   "name": "Alloy",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "${discription}",
   "authors": [
-    "Me!"
+    "${auth1}",
+    "${auth2}"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://games.friendcraft.top/minecraft-mods/alloy/",
+    "sources": "https://www.github.com/MinecraftYYDS7/Alloy"
   },
   "license": "Insert License Here",
   "environment": "*",
